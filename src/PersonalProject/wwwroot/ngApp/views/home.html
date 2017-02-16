@@ -1,0 +1,27 @@
+<div class="container">
+    <div>
+        <h2>Remixes</h2>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Original Name</th>
+                    <th>Remix Status</th>
+                    <th>Admin Notes</th>
+                    <th>Your Notes</th>
+                    <th>Remix Genre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in controller.remixes">
+                    <td>{{r.originalName}}</td>
+                    <td>{{r.status}}</td>
+                    <td>{{r.adminNote}}</td>
+                    <td>{{r.userNote}}</td>
+                    <td>{{r.requestedGenre.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
