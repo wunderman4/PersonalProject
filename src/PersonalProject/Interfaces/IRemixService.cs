@@ -5,6 +5,7 @@ namespace PersonalProject.Interfaces
 {
     public interface IRemixService
     {
+        void PassName(string name);
         void AddRemix(Remix rmx);
         void DeleteRemix(int id);
         Remix GetRemix(int id);

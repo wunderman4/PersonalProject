@@ -16,10 +16,17 @@ namespace PersonalProject.API
 
         private IGenreService _genre;
 
+        public GenresController(IGenreService genre)
+        {
+            _genre = genre;
+        }
+
         [HttpGet]
         public List<Genre> Get()
         {
+            
            return _genre.AllGenres();
+            
         }
 
 

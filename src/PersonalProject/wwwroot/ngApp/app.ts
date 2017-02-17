@@ -36,6 +36,12 @@ namespace PersonalProject {
                 templateUrl: '/ngApp/views/externalRegister.html',
                 controller: PersonalProject.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
+            })
+            .state(`addRemixRequest`, {
+                url: `/addRemixRequest`,
+                templateUrl: `/ngApp/views/registeredViews/remixRequest.html`,
+                controller: PersonalProject.Controllers.AddRemixController,
+                controllerAs: `controller`
             }) 
             .state('about', {
                 url: '/about',

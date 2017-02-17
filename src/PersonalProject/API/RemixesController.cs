@@ -15,29 +15,48 @@ namespace PersonalProject.API
     public class RemixesController : Controller
     {
         private IRemixService _rmx;
+        
 
         public RemixesController(IRemixService rmx)
         {
             _rmx = rmx;
         }
 
+
+        [HttpGet("public")]
         
-        [HttpGet]
-        //[Authorize]
-        public List<Remix> Get()
+        public List<Remix> PublicGet()
         {
             return _rmx.ListRemixes();
         }
 
-        
+
         [HttpGet("{id}")]
         public Remix Get(int id)
         {
             return _rmx.GetRemix(id);
         }
-
+        [HttpGet]
+        [Authorize]
+        public List<Remix> Get()
+        {
+            
+            List<Remix> remixes = (from u in _rmx.ListRemixes()
+                                        where u.UserTable.Id == User.Identity.Name
+                                        select u).ToList();
+            return remixes;
+        }
+        [HttpGet("public/" + "{id}")]
+        public Remix PublicGet(int id) {
+            Remix remix = (from r in _rmx.ListRemixes()
+                           where r.UserTable.Id == User.Identity.Name
+                           && r.Id == id
+                           select r).FirstOrDefault();
+            return remix;
+        }
         
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody]Remix rmx)
         {
             if (rmx == null)
@@ -46,6 +65,9 @@ namespace PersonalProject.API
             }
             else if (rmx.Id == 0)
             {
+                
+                
+                _rmx.PassName(User.Identity.Name);
                 _rmx.AddRemix(rmx);
                 return Ok();
             }
@@ -55,9 +77,7 @@ namespace PersonalProject.API
                 return Ok();
             }
         }
-
-
-
+        
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
