@@ -40,7 +40,7 @@ namespace PersonalProject.Controllers {
 
         public login() {
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/userDashboard');
             }).catch((results) => {
                 this.validationMessages = results;
             });

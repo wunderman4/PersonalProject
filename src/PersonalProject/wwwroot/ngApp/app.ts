@@ -42,12 +42,36 @@ namespace PersonalProject {
                 templateUrl: `/ngApp/views/registeredViews/remixRequest.html`,
                 controller: PersonalProject.Controllers.AddRemixController,
                 controllerAs: `controller`
+            })
+            .state(`userDashboard`, {
+                url: `/userDashboard`,
+                templateUrl: `/ngApp/views/registeredViews/userDashboard.html`,
+                controller: PersonalProject.Controllers.UserDashboardController,
+                controllerAs:`controller`
             }) 
-            .state('about', {
-                url: '/about',
-                templateUrl: '/ngApp/views/about.html',
-                controller: PersonalProject.Controllers.AboutController,
+            .state(`editRemixRequest`, {
+                url: `/editRemixRequest/:id`,
+                templateUrl: `/ngApp/views/registeredViews/editRemix.html`,
+                controller: PersonalProject.Controllers.EditRemixController,
+                controllerAs: `controller`
+            })
+            .state('aboutRemix', {
+                url: '/aboutRemix/:id',
+                templateUrl: '/ngApp/views/aboutRemix.html',
+                controller: PersonalProject.Controllers.AboutRemixController,
                 controllerAs: 'controller'
+            })
+            .state(`adminDashboard`, {
+                url: `/adminDashboard`,
+                templateUrl: `/ngApp/views/adminViews/adminDashboard.html`,
+                controller: PersonalProject.Controllers.AdminDashboardController,
+                controllerAs:`controller`
+            })
+            .state(`adminEditRemix`, {
+                url: `/adminEditRemix/:id`,
+                templateUrl: `/ngApp/views/adminViews/adminEditRemix.html`,
+                controller: PersonalProject.Controllers.AdminEditRemixController,
+                controllerAs:`controller`
             })
             .state('notFound', {
                 url: '/notFound',

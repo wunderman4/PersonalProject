@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace PersonalProject.Services
 {
@@ -24,7 +25,6 @@ namespace PersonalProject.Services
             _user = (from u in _repo.Query<ApplicationUser>()
                      where u.UserName == name
                      select u).FirstOrDefault();
-
         }
 
         public List<Remix> ListRemixes()
@@ -45,6 +45,23 @@ namespace PersonalProject.Services
             return remixes;
         }
 
+        public List<Remix> ListRemixByUser()
+        {
+            List<Remix> rmxByUser = (from r in _repo.Query<Remix>()
+                                     where r.UserTable == _user
+                                     select new Remix //-----------------------Pay Attention to this! No circular ref!
+                                     {
+                                         Id = r.Id,
+                                         OriginalName = r.OriginalName,
+                                         youtubeUrl = r.youtubeUrl,
+                                         RequestedGenre = r.RequestedGenre,
+                                         UserNote = r.UserNote,
+                                         Status = r.Status,
+                                         AdminNote = r.AdminNote,
+                                         UserTable = r.UserTable
+                                     }).ToList();
+            return rmxByUser;
+        }
 
 
         public Remix GetRemix(int id)

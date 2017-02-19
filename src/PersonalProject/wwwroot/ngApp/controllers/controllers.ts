@@ -24,9 +24,9 @@ namespace PersonalProject.Controllers {
         public remix;
         public genres;
 
-        public addRmxRequest() { // help! 
+        public addRmxRequest() {
             this.$http.post(`/api/remixes`, this.remix).then((response) => {
-                this.$state.go(`home`);
+                this.$state.go(`userDashboard`);
             })
         }
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService, private accountService: PersonalProject.Services.AccountService) {
@@ -38,9 +38,96 @@ namespace PersonalProject.Controllers {
         }
     }
 
+    export class UserDashboardController {
+        public message = `Welcome to your Dashboard`;
+        public remixes;
 
-    export class AboutController {
-        public message = 'Hello from the about page!';
+        public deleteRemix(id:number) {
+            this.$http.delete(`/api/remixes/` + id).then(() => {
+                this.$state.reload();
+            })
+        }
+
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get(`/api/remixes`).then((response) => {
+                this.remixes = response.data;
+            })
+        }
+    }
+
+    export class EditRemixController {
+        public remix;
+        public genres;
+
+        public editRmxRequest() {
+            this.$http.post(`/api/remixes`, this.remix).then((response) => {
+                this.$state.go(`userDashboard`);
+            })
+        }
+
+        constructor(private $http: ng.IHttpService,
+            private $state: ng.ui.IStateService,
+            private $stateParams: ng.ui.IStateParamsService) {
+
+            let rmxId = $stateParams[`id`];
+            $http.get(`/api/remixes/` + rmxId).then((response) => { 
+                this.remix = response.data;
+            }) 
+            $http.get(`/api/genres`).then((response) => {
+                this.genres = response.data;
+            })
+        }
+    }
+
+    export class AboutRemixController {
+        public remix;
+        constructor(private $http: ng.IHttpService, private $stateParams: ng.ui.IStateParamsService) {
+
+            let rmxId = $stateParams[`id`];
+            $http.get(`/api/remixes/public/` + rmxId).then((response) => {
+                this.remix = response.data;
+            })
+        }
+    }
+
+    export class AdminDashboardController {
+        public remixes;
+
+        public adminDelete(id: number) {
+            this.$http.delete(`/api/remixes/` + id).then((res) => {
+                this.$state.reload();
+            })
+        }
+        
+        constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
+            $http.get(`/api/remixes/admin`).then((response) => {
+                this.remixes = response.data;
+            })
+        }
+    }
+
+    export class AdminEditRemixController {
+        public remix;
+        public genres;
+
+        public editRmxRequest() {
+            this.$http.post(`/api/remixes`, this.remix).then((response) => {
+                this.$state.go(`adminDashboard`);
+            })
+        }
+
+        constructor(private $http: ng.IHttpService,
+            private $state: ng.ui.IStateService,
+            private $stateParams: ng.ui.IStateParamsService) {
+
+            let rmxId = $stateParams[`id`];
+            $http.get(`/api/remixes/` + rmxId).then((response) => {
+                this.remix = response.data;
+            })
+            $http.get(`/api/genres`).then((response) => {
+                this.genres = response.data;
+            })
+        }
     }
 
 }

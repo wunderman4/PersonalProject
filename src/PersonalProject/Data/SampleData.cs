@@ -19,19 +19,19 @@ namespace PersonalProject.Data
             context.Database.EnsureCreated();
 
             // Ensure Stephen (IsAdmin)
-            var stephen = await userManager.FindByNameAsync("Stephen.Walther@CoderCamps.com");
-            if (stephen == null)
+            var christian = await userManager.FindByNameAsync("wunderman4@gmail.com");
+            if (christian == null)
             {
                 // create user
-                stephen = new ApplicationUser
+                christian = new ApplicationUser
                 {
-                    UserName = "Stephen.Walther@CoderCamps.com",
-                    Email = "Stephen.Walther@CoderCamps.com"
+                    UserName = "wunderman4@gmail.com",
+                    Email = "wunderman4@gmail.com"
                 };
-                await userManager.CreateAsync(stephen, "Secret123!");
+                await userManager.CreateAsync(christian, "Bacon4life!");
 
                 // add claims
-                await userManager.AddClaimAsync(stephen, new Claim("IsAdmin", "true"));
+                await userManager.AddClaimAsync(christian, new Claim("IsAdmin", "true"));
             }
 
             // Ensure Mike (not IsAdmin)

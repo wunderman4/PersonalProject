@@ -1,0 +1,27 @@
+﻿<div class="container">
+    <div>
+        <h2>Admin Dashboard</h2>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" >
+        <div>
+            <h2>Remix Requests</h2>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Original Name</th>
+                    <th>Remix Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in controller.remixes">
+                    <td>{{r.originalName}}</td>
+                    <td>{{r.status}}</td>
+                    <td><button class="btn btn-info btn-sm" ui-sref="adminEditRemix({id: r.id})">Edit</button></td>
+                    <td><button class="btn btn-danger btn-sm" ng-click="controller.adminDelete(r.id)" >Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Add second table here to display gig requests then have them match up side by side on the page when displayed. -->

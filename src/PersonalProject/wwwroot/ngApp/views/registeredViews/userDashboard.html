@@ -1,0 +1,24 @@
+﻿<div class="container">
+    <div>
+        <h2>{{controller.message}}</h2>
+    </div>
+
+    <div class="jumbotron">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Originial Song Name:</th>
+                    <th>Requested Remix Genre:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="r in controller.remixes">
+                    <td>{{r.originalName}}</td>
+                    <td>{{r.userNote}}</td>
+                    <td><button class="btn btn-warning" ui-sref="editRemixRequest({id: r.id})">Edit</button></td>
+                    <td><button class="btn btn-danger" ng-click="controller.deleteRemix(r.id)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -16,44 +16,44 @@ namespace PersonalProject.API
     {
         private IRemixService _rmx;
         
-
+        
         public RemixesController(IRemixService rmx)
         {
             _rmx = rmx;
         }
 
 
-        [HttpGet("public")]
+        [HttpGet("public")] //this works great, shows all remixes perfectly
         
         public List<Remix> PublicGet()
         {
-            return _rmx.ListRemixes();
+            return _rmx.ListRemixes(); // listremixes() ruturns great no issue. 
+        }
+
+        [HttpGet("public/{id}")] // most likely this is not the way to mod the path and pass id at the same time.
+        public Remix PublicGet(int id)
+        {
+            return _rmx.GetRemix(id);
         }
 
 
         [HttpGet("{id}")]
+        [Authorize] // ---------------------added not tested-------- be warned!!!
         public Remix Get(int id)
         {
             return _rmx.GetRemix(id);
         }
+
         [HttpGet]
         [Authorize]
         public List<Remix> Get()
         {
             
-            List<Remix> remixes = (from u in _rmx.ListRemixes()
-                                        where u.UserTable.Id == User.Identity.Name
-                                        select u).ToList();
-            return remixes;
+            _rmx.PassName(User.Identity.Name);
+           return _rmx.ListRemixByUser();
+           
         }
-        [HttpGet("public/" + "{id}")]
-        public Remix PublicGet(int id) {
-            Remix remix = (from r in _rmx.ListRemixes()
-                           where r.UserTable.Id == User.Identity.Name
-                           && r.Id == id
-                           select r).FirstOrDefault();
-            return remix;
-        }
+        
         
         [HttpPost]
         [Authorize]
@@ -79,9 +79,19 @@ namespace PersonalProject.API
         }
         
         [HttpDelete("{id}")]
+        [Authorize] // ------------------------untested be warned!
         public void Delete(int id)
         {
             _rmx.DeleteRemix(id);
+        }
+
+        // ----------------------------------- Admin get/post/delete ----------------------------------------------------
+
+        [HttpGet("admin")]
+        [Authorize(Policy = "AdminOnly")] // return here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        public List<Remix> AdminGet()
+        {
+            return _rmx.ListRemixes();
         }
     }
 }
