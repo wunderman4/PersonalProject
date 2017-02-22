@@ -39,7 +39,7 @@ namespace PersonalProject.Services
                                        UserNote = r.UserNote,
                                        Status = r.Status,
                                        AdminNote = r.AdminNote,
-                                       UserTable = r.UserTable
+                                       UserTable = null
 
                                    }).ToList();
             return remixes;
@@ -58,7 +58,7 @@ namespace PersonalProject.Services
                                          UserNote = r.UserNote,
                                          Status = r.Status,
                                          AdminNote = r.AdminNote,
-                                         UserTable = r.UserTable
+                                         UserTable = null
                                      }).ToList();
             return rmxByUser;
         }

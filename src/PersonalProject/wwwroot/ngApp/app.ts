@@ -1,6 +1,6 @@
 namespace PersonalProject {
 
-    angular.module('PersonalProject', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('PersonalProject', ['ui.router', 'ngResource', 'ui.bootstrap','ngAnimate']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider

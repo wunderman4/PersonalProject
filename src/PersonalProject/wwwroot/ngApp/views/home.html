@@ -1,28 +1,37 @@
-<div class="container">
-    <div>
-        <h2>Remixes</h2>
+
+    <div class="row">
+        
+        <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 text-justify jumbotron " ng-show="!account.isLoggedIn()">
+            <h2>Welcome,</h2>
+            <p>Please log in to see all current remix requests, make your own request, or edit existing requests.<br /> <br />
+            If your new here please follow the login link in the navigation bar to make an account and get started!</p>
+        </div>
+
+        
+        <div class="row jumbotron col-lg-10 col-md-10 col-sm-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1" ng-show="account.isLoggedIn()">
+            <div class="text-center tableTitle">
+                <h2>Check out my current projects</h2>
+                <h5>Click on any to see additonal details...</h5>
+            </div>
+            <div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Original Song Title:</th>
+                            <th>Remix Status</th>
+                            <th>Remix Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="r in controller.remixes" ui-sref="aboutRemix({id: r.id})">
+                            <td>{{r.originalName}}</td>
+                            <td>{{r.status}}</td>
+                            <td>{{r.requestedGenre.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <div>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Original Name</th>
-                    <th>Remix Status</th>
-                    <th>Admin Notes</th>
-                    <th>Your Notes</th>
-                    <th>Remix Genre</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="r in controller.remixes" ui-sref="aboutRemix({id: r.id})">
-                    <td>{{r.originalName}}</td>
-                    <td>{{r.status}}</td>
-                    <td>{{r.adminNote}}</td>
-                    <td>{{r.userNote}}</td>
-                    <td>{{r.requestedGenre.name}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+
 

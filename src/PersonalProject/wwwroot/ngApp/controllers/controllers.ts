@@ -92,7 +92,7 @@ namespace PersonalProject.Controllers {
 
     export class AdminDashboardController {
         public remixes;
-
+        public genres;
         public adminDelete(id: number) {
             this.$http.delete(`/api/remixes/` + id).then((res) => {
                 this.$state.reload();
@@ -102,6 +102,9 @@ namespace PersonalProject.Controllers {
         constructor(private $http: ng.IHttpService, private $state: ng.ui.IStateService) {
             $http.get(`/api/remixes/admin`).then((response) => {
                 this.remixes = response.data;
+            })
+            $http.get(`/api/genres`).then((response) => {
+                this.genres = response.data;
             })
         }
     }

@@ -24,6 +24,8 @@ namespace PersonalProject.Controllers {
             return this.accountService.getExternalLogins();
         }
 
+        
+
         constructor(private accountService: PersonalProject.Services.AccountService, private $location: ng.ILocationService) {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;

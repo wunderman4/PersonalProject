@@ -1,25 +1,30 @@
-﻿<div class="container">
-    <div>
-        <h2>Edit Remix Request</h2>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-6">
-        <form ng-submit="controller.editRmxRequest()">
-            <div class="form-group">
-                <label>Title:</label>
-                <input class="form-control" type="text" ng-model="controller.remix.originalName" />
-            </div>
-            <div class="form-group">
-                <label> Notes:</label>
-                <input class="form-control" type="text" ng-model="controller.remix.userNote" />
-            </div>
-            <div class="dropdown form-group">
-                <label>What genre should the remix be?:</label>
-                <select class="form-control" ng-model="controller.remix.requestedGenre.id" ng-options="genre.id as genre.name for genre in controller.genres" required>
-                    <option value="">---Select a Genre---</option> <!--empty value is needed to display the text inside the option tags. -->
-                </select>
-
-            </div>
-            <input type="submit" class="btn btn-primary" />
-        </form>
+﻿<div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 jumbotron ">
+        <div>
+            <h2>Edit Remix Request</h2>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <form ng-submit="controller.editRmxRequest()">
+                <div class="form-group">
+                    <label>Song Original Name:</label>
+                    <input class="form-control" type="text" ng-model="controller.remix.originalName" />
+                </div>
+                <div class="form-group">
+                    <label>YouTube Link to Original Work:</label>
+                    <input class="form-control" type="text" ng-model="controller.remix.youtubeUrl" />
+                </div>
+                <div class="dropdown form-group">
+                    <label>What genre should the remix be?:</label>
+                    <select class="form-control" ng-model="controller.remix.requestedGenre.id" ng-options="genre.id as genre.name for genre in controller.genres" required>
+                        <option value="">---Select a Genre---</option> <!--empty value is needed to display the text inside the option tags. -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label> Tell me a little bit about your remix idea:</label>
+                    <input class="form-control" type="text" ng-model="controller.remix.userNote" />
+                </div>
+                <input type="submit" class="btn btn-primary" />
+            </form>
+        </div>
     </div>
 </div>
