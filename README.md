@@ -14,8 +14,4 @@ Password: Bacon4life!
 
 //-----------------------------------
 
-User Login: (feel free to create your own)
-
-email: bacon@bacon.com
-
-password: Bacon4life!
+User Login: please create your own :)
