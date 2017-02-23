@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="r in controller.genre.remixes">
+                        <tr ng-repeat="r in controller.genre.remixes" ui-sref="aboutRemix({id: r.id})">
                             <td>{{r.originalName}}</td>
                             <td>{{r.status}}</td>
                         </tr>
