@@ -5,8 +5,11 @@ When you get to the home page you will be asked to log in. By default there are 
 
 
 Admin login:
+
 email: wunderman4@gmail.com
+
 Password: Bacon4life!
+
 
 
 User Login: (feel free to create your own)
