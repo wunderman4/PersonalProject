@@ -13,12 +13,6 @@ namespace PersonalProject {
                 controller: PersonalProject.Controllers.HomeController,
                 controllerAs: 'controller'
             })
-            .state('secret', {
-                url: '/secret',
-                templateUrl: '/ngApp/views/secret.html',
-                controller: PersonalProject.Controllers.SecretController,
-                controllerAs: 'controller'
-            })
             .state('login', {
                 url: '/login',
                 templateUrl: '/ngApp/views/login.html',
@@ -72,6 +66,12 @@ namespace PersonalProject {
                 templateUrl: `/ngApp/views/adminViews/adminEditRemix.html`,
                 controller: PersonalProject.Controllers.AdminEditRemixController,
                 controllerAs:`controller`
+            })
+            .state(`adminEditGenre`, {
+                url: `/adminEditGenre/:id`,
+                templateUrl: `/ngApp/views/adminViews/adminEditGenre.html`,
+                controller: PersonalProject.Controllers.AdminEditGenreController,
+                controllerAs: `controller`
             })
             .state('notFound', {
                 url: '/notFound',

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PersonalProject.Services
 {
-    public class StateService
+    public class StateService: IStateService
     {
         private IGenericRepository _repo;
 

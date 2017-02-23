@@ -10,6 +10,7 @@ namespace PersonalProject.Interfaces
         void DeleteRemix(int id);
         Remix GetRemix(int id);
         List<Remix> ListRemixes();
+        List<Remix> AdminListRemixes();
         List<Remix> ListRemixByUser();
         void UpdateRemix(Remix rmx);
     }

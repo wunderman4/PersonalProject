@@ -1,9 +1,9 @@
 ﻿<div class="row">
     <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 jumbotron ">
-        <div>
+        <div class="tableTitle">
             <h2>Edit Remix Request</h2>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
+        <div>
             <form ng-submit="controller.editRmxRequest()">
                 <div class="form-group">
                     <label>Song Original Name:</label>
@@ -21,9 +21,10 @@
                 </div>
                 <div class="form-group">
                     <label> Tell me a little bit about your remix idea:</label>
-                    <input class="form-control" type="text" ng-model="controller.remix.userNote" />
+                    <textarea class="form-control" ng-model="controller.remix.userNote" spellcheck="true"></textarea>
                 </div>
                 <input type="submit" class="btn btn-primary" />
+                <button class="btn btn-xs" ui-sref="userDashboard">Cancel</button>
             </form>
         </div>
     </div>

@@ -16,7 +16,7 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+                <li class="sidebar-brand" >
                     <a href="/">
                         Elevated Sounds
                     </a>
@@ -28,7 +28,7 @@
                     <a href="/userDashboard" ng-show="account.isLoggedIn()">Your Dashboard</a>
                 </li>
                 <li>
-                    <a href="addRemixRequest" ng-show="account.isLoggedIn()" >Request New Remix</a>
+                    <a href="addRemixRequest" ng-show="account.isLoggedIn()">Request New Remix</a>
                 </li>
                 <li>
                     <a href="/adminDashboard" ng-show="account.getClaim('IsAdmin')">Admin</a>
@@ -37,10 +37,13 @@
                     <a ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
                 </li>
                 <li>
-                    <h6 ng-show="account.isLoggedIn()">Logged in as "{{account.getUserName()}}"</h6>
+                    <h6 ng-show="account.isLoggedIn()">User: "{{account.getUserName()}}"</h6>
+                </li>
+                <li>
+                    <iframe width="0" height="0" src="https://www.youtube.com/embed/cx4Y4ox4BhI?autoplay=1;rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
                 </li>
             </ul>
-
+            
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
@@ -60,28 +63,6 @@
         </div>
         <!-- /#page-content-wrapper -->
     </div>
-
-    <!-- Divider ---------------------------------------------------------------------------------------------------------------------------------->
-    @*<div class="container">
-        <div class="row">
-            <nav class="navbar navbar-default navbar-static-top ">
-                <div>
-                    <ol class="breadcrumb nav-pills">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="addRemixRequest">Request New Remix</a></li>
-                        <li><a href="/adminDashboard" ng-show="account.isLoggedIn()">Admin</a></li>
-                        <li><a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a></li>
-                    </ol>
-                    <h6 ng-show="account.isLoggedIn()" class="text-right">Logged in as "{{account.getUserName()}}"</h6>
-                </div>
-            </nav>
-        </div>*@
-
-    @*<div class="row" >
-                <ui-view></ui-view>
-
-            </div>
-        </div>*@
 
     <!-- Library Files -->
     <script src="~/bower_components/jquery/dist/jquery.js"></script>

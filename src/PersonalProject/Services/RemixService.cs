@@ -45,6 +45,26 @@ namespace PersonalProject.Services
             return remixes;
         }
 
+        public List<Remix> AdminListRemixes()
+        {
+            List<Remix> remixes = (from r in _repo.Query<Remix>()
+                                   select new Remix
+                                   {
+                                       Id = r.Id,
+                                       OriginalName = r.OriginalName,
+                                       youtubeUrl = r.youtubeUrl,
+                                       RequestedGenre = r.RequestedGenre,
+                                       UserNote = r.UserNote,
+                                       Status = r.Status,
+                                       AdminNote = r.AdminNote,
+                                       UserTable = new ApplicationUser {
+                                           UserName = r.UserTable.UserName
+                                       }
+
+                                   }).ToList();
+            return remixes;
+        }
+
         public List<Remix> ListRemixByUser()
         {
             List<Remix> rmxByUser = (from r in _repo.Query<Remix>()

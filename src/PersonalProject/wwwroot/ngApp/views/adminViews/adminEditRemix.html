@@ -1,16 +1,21 @@
-﻿<div class="container">
-    <div>
-        <h2>Edit Remix Request</h2>
+﻿<div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 text-justify jumbotron">
+    <div class="text-center tableTitle">
+        <h2>Update Remix Request</h2>
+        
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6">
+    <div>
         <form ng-submit="controller.editRmxRequest()">
             <div class="form-group">
-                <label>Title:</label>
+                <label>Song Title:</label>
                 <input class="form-control" type="text" ng-model="controller.remix.originalName" />
             </div>
             <div class="form-group">
-                <label> Notes:</label>
-                <input class="form-control" type="text" ng-model="controller.remix.userNote" />
+                <label>Status:</label>
+                <input class="form-control" type="text" ng-model="controller.remix.status" />
+            </div>
+            <div class="form-group">
+                <label>Admin Notes:</label>
+                <textarea class="form-control" ng-model="controller.remix.adminNote" spellcheck="true"></textarea>
             </div>
             <div class="dropdown form-group">
                 <label>What genre should the remix be?:</label>
