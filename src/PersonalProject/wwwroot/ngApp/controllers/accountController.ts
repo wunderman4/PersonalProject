@@ -24,6 +24,8 @@ namespace PersonalProject.Controllers {
             return this.accountService.getExternalLogins();
         }
 
+        
+
         constructor(private accountService: PersonalProject.Services.AccountService, private $location: ng.ILocationService) {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;
@@ -40,7 +42,7 @@ namespace PersonalProject.Controllers {
 
         public login() {
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/userDashboard');
             }).catch((results) => {
                 this.validationMessages = results;
             });

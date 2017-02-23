@@ -15,29 +15,46 @@ namespace PersonalProject.API
     public class RemixesController : Controller
     {
         private IRemixService _rmx;
-
+        
+        //constructor
         public RemixesController(IRemixService rmx)
         {
             _rmx = rmx;
         }
 
-        
-        [HttpGet]
-        //[Authorize]
-        public List<Remix> Get()
+
+        [HttpGet("public")] //----------------------------------------Done!
+        public List<Remix> PublicGet()
         {
-            return _rmx.ListRemixes();
+            return _rmx.ListRemixes(); // listremixes() ruturns great no issue. 
         }
 
-        
-        [HttpGet("{id}")]
+        [HttpGet("public/{id}")] //-----------------------------------Done!
+        public Remix PublicGet(int id)
+        {
+            return _rmx.GetRemix(id);
+        }
+
+
+        [HttpGet("{id}")] //------------------------------------------Done!
+        [Authorize] 
         public Remix Get(int id)
         {
             return _rmx.GetRemix(id);
         }
 
+        [HttpGet] //--------------------------------------------------Done!
+        [Authorize]
+        public List<Remix> Get()
+        {
+            
+            _rmx.PassName(User.Identity.Name);
+           return _rmx.ListRemixByUser();
+           
+        }
         
-        [HttpPost]
+        [HttpPost] //-------------------------------------------------Done!
+        [Authorize]
         public IActionResult Post([FromBody]Remix rmx)
         {
             if (rmx == null)
@@ -46,6 +63,9 @@ namespace PersonalProject.API
             }
             else if (rmx.Id == 0)
             {
+                
+                
+                _rmx.PassName(User.Identity.Name);
                 _rmx.AddRemix(rmx);
                 return Ok();
             }
@@ -55,13 +75,21 @@ namespace PersonalProject.API
                 return Ok();
             }
         }
-
-
-
-        [HttpDelete("{id}")]
+        
+        [HttpDelete("{id}")] //---------------------------------------Done!
+        [Authorize]
         public void Delete(int id)
         {
             _rmx.DeleteRemix(id);
+        }
+
+        // ----------------------------------- Admin get/post/delete ----------------------------------------------------
+
+        [HttpGet("admin")] //-----------------------------------------Done!
+        [Authorize(Policy = "AdminOnly")]
+        public List<Remix> AdminGet()
+        {
+            return _rmx.AdminListRemixes();
         }
     }
 }

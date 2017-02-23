@@ -1,0 +1,35 @@
+<div class="jumbotron">
+    <nav class="navbar navbar-inverse navnavnav ">
+        <div class="container-fluid navnavnav">
+            <div class="navbar-header text-center center-block navnavnav">
+                <a class="navbar-brand" href="/">Return</a>
+            </div>
+        </div>
+    </nav>
+    <h2 class="tableTitle text-center">{{controller.remix.originalName}} Remix</h2>
+
+
+    <table class="table ">
+        <tbody class="text-left">
+            <tr>
+                <td class="text-center">Remix Status:</td>
+                <td>{{controller.remix.status}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">Genre:</td>
+                <td>{{controller.remix.requestedGenre}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">Requested Specifications:</td>
+                <td>{{controller.remix.userNote}}</td>
+            </tr>
+            <tr>
+                <td class="text-center">Project Log:</td>
+                <td>{{controller.remix.adminNote}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="embeddedVideo" class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
+        <p>{{controller.remix.youtubeUrl}}" </p>
+    </div>
+</div>

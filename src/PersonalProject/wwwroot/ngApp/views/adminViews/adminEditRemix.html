@@ -1,0 +1,31 @@
+﻿<div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 text-justify jumbotron">
+    <div class="text-center tableTitle">
+        <h2>Update Remix Request</h2>
+        
+    </div>
+    <div>
+        <form ng-submit="controller.editRmxRequest()">
+            <div class="form-group">
+                <label>Song Title:</label>
+                <input class="form-control" type="text" ng-model="controller.remix.originalName" />
+            </div>
+            <div class="form-group">
+                <label>Status:</label>
+                <input class="form-control" type="text" ng-model="controller.remix.status" />
+            </div>
+            <div class="form-group">
+                <label>Admin Notes:</label>
+                <textarea class="form-control" ng-model="controller.remix.adminNote" spellcheck="true"></textarea>
+            </div>
+            <div class="dropdown form-group">
+                <label>What genre should the remix be?:</label>
+                <select class="form-control" ng-model="controller.remix.requestedGenre.id" ng-options="genre.id as genre.name for genre in controller.genres" required>
+                    <option value="">---Select a Genre---</option> <!--empty value is needed to display the text inside the option tags. -->
+                </select>
+
+            </div>
+            <input type="submit" class="btn btn-primary" />
+            <button class="btn btn-xs" ui-sref="adminDashboard">Cancel</button>
+        </form>
+    </div>
+</div>

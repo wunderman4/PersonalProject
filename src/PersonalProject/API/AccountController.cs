@@ -51,7 +51,7 @@ namespace PersonalProject.Controllers
             return vm;
         }
 
-        //
+        
         // POST: /Account/Login
         [HttpPost("login")]
         [AllowAnonymous]
@@ -91,7 +91,7 @@ namespace PersonalProject.Controllers
         }
 
 
-        //
+        
         // POST: /Account/Register
         [HttpPost("Register")]
         [AllowAnonymous]
@@ -136,7 +136,7 @@ namespace PersonalProject.Controllers
         }
 
 
-        //
+        
         // POST: /Account/LogOff
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
@@ -158,7 +158,7 @@ namespace PersonalProject.Controllers
             });
         }
 
-        //
+        
         // POST: /Account/ExternalLogin
         [HttpGet("ExternalLogin")]
         [AllowAnonymous]
@@ -170,7 +170,7 @@ namespace PersonalProject.Controllers
             return new ChallengeResult(provider, properties);
         }
 
-        //
+        
         // GET: /Account/ExternalLoginCallback
         [HttpGet("ExternalLoginCallback")]
         [AllowAnonymous]
@@ -208,7 +208,7 @@ namespace PersonalProject.Controllers
             }
         }
 
-        //
+        
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost("ExternalLoginConfirmation")]
         [AllowAnonymous]
@@ -264,7 +264,7 @@ namespace PersonalProject.Controllers
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        //
+        
         // GET: /Account/ForgotPassword
         [HttpGet]
         [AllowAnonymous]
@@ -273,7 +273,7 @@ namespace PersonalProject.Controllers
             return View();
         }
 
-        //
+        
         // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
@@ -302,7 +302,7 @@ namespace PersonalProject.Controllers
             return View(model);
         }
 
-        //
+        
         // GET: /Account/ForgotPasswordConfirmation
         [HttpGet]
         [AllowAnonymous]
@@ -311,7 +311,7 @@ namespace PersonalProject.Controllers
             return View();
         }
 
-        //
+        
         // GET: /Account/ResetPassword
         [HttpGet]
         [AllowAnonymous]
@@ -320,7 +320,7 @@ namespace PersonalProject.Controllers
             return code == null ? View("Error") : View();
         }
 
-        //
+        
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -346,7 +346,7 @@ namespace PersonalProject.Controllers
             return View();
         }
 
-        //
+        
         // GET: /Account/ResetPasswordConfirmation
         [HttpGet]
         [AllowAnonymous]
@@ -355,7 +355,7 @@ namespace PersonalProject.Controllers
             return View();
         }
 
-        //
+        
         // GET: /Account/SendCode
         [HttpGet]
         [AllowAnonymous]
@@ -371,7 +371,7 @@ namespace PersonalProject.Controllers
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
+        
         // POST: /Account/SendCode
         [HttpPost]
         [AllowAnonymous]
@@ -409,7 +409,7 @@ namespace PersonalProject.Controllers
             return RedirectToAction(nameof(VerifyCode), new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
-        //
+        
         // GET: /Account/VerifyCode
         [HttpGet]
         [AllowAnonymous]
@@ -424,7 +424,7 @@ namespace PersonalProject.Controllers
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        //
+        
         // POST: /Account/VerifyCode
         [HttpPost]
         [AllowAnonymous]

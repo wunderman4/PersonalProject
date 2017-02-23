@@ -1,6 +1,11 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url(/images/Technovader.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
 }
 
 /* Wrapping element */
@@ -8,6 +13,8 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    background-color:rgba(180, 47, 69, 0.93);
+    box-shadow: 1px 2px 5px rgba(34,34,34,0.6);
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -31,4 +38,34 @@ textarea {
     .carousel-caption {
         z-index: 10 !important;
     }
+}
+
+.Logogo {
+    font-family: 'Oleo Script', cursive;
+    font-size: 80px;
+    
+}
+.jumbotron {
+background-color:rgba(180, 47, 69, 0.93);
+box-shadow: 1px 2px 5px rgba(34,34,34,0.6);
+}
+
+.btnCustom {
+color:rgba(33, 32, 32, 0.98);
+Background: rgba(180, 47, 69, 0.93);
+font: bold;
+}
+tbody, thead {
+background-color:#ededed;
+}
+.tableTitle {
+color:aliceblue;
+text-shadow: 1px 2px 5px rgba(34,34,34,0.6);
+}
+table {
+    box-shadow: 1px 2px 5px rgba(34,34,34,0.6);
+}
+.errorArea {
+background-color: black;
+color:aliceblue;
 }

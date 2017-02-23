@@ -137,6 +137,10 @@ namespace PersonalProject.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -203,9 +207,13 @@ namespace PersonalProject.Data.Migrations
 
                     b.Property<string>("UserNote");
 
+                    b.Property<string>("UserTableId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("StateId");
+
+                    b.HasIndex("UserTableId");
 
                     b.ToTable("Gigs");
                 });
@@ -225,11 +233,15 @@ namespace PersonalProject.Data.Migrations
 
                     b.Property<string>("UserNote");
 
+                    b.Property<string>("UserTableId");
+
                     b.Property<string>("youtubeUrl");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RequestedGenreId");
+
+                    b.HasIndex("UserTableId");
 
                     b.ToTable("Remixes");
                 });
@@ -288,6 +300,10 @@ namespace PersonalProject.Data.Migrations
                     b.HasOne("PersonalProject.Models.State", "State")
                         .WithMany("Gigs")
                         .HasForeignKey("StateId");
+
+                    b.HasOne("PersonalProject.Models.ApplicationUser", "UserTable")
+                        .WithMany("Gigs")
+                        .HasForeignKey("UserTableId");
                 });
 
             modelBuilder.Entity("PersonalProject.Models.Remix", b =>
@@ -295,6 +311,10 @@ namespace PersonalProject.Data.Migrations
                     b.HasOne("PersonalProject.Models.Genre", "RequestedGenre")
                         .WithMany("Remixes")
                         .HasForeignKey("RequestedGenreId");
+
+                    b.HasOne("PersonalProject.Models.ApplicationUser", "UserTable")
+                        .WithMany("Remixes")
+                        .HasForeignKey("UserTableId");
                 });
         }
     }

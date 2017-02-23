@@ -1,0 +1,72 @@
+﻿<div class="container">
+    <div class="col-lg-12 col-md-12 col-sm-12  jumbotron">
+        <div class="text-center tableTitle">
+            <h2 >Admin Dashboard</h2>
+            <p>From here you can make changes to all aspects of the site to include updating, adding, deleting etc etc...</p>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="text-center tableTitle">
+                <h3>Remix Requests</h3>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Track to Remix Title:</th>
+                        <th class="text-center">Remix Status:</th>
+                        <th class="text-center">Created by:</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="r in controller.remixes" >
+                        <td><a ui-sref="aboutRemix({id: r.id})" >{{r.originalName}}</a></td>
+                        <td>{{r.status}}</td>
+                        <td>{{r.userTable.userName}}</td>
+                        <td><button class="btn btn-info btn-sm" ui-sref="adminEditRemix({id: r.id})">Edit</button></td>
+                        <td><button class="btn btn-danger btn-sm" ng-click="controller.adminDelete(r.id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- break for add genre area -->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="text-center tableTitle">
+                <h3>Add Genre</h3>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <form ng-submit="controller.adminAddGenre()">
+                    <div class="form-group text-center tableTitle">
+                        <label>Genre Name:</label>
+                        <input class="form-control" type="text" ng-model="controller.genre.name" />
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Add Genre" />
+                </form>
+            </div>
+
+        </div>
+        <!-- break for edit delete display area. -->
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="text-center tableTitle">
+                <h3>All Genres</h3>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Name:</th>
+                        <th class="text-center">View Associations & Edit:</th>
+                        <th class="text-center">Delete:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="g in controller.genres">
+                        <td>{{g.name}}</td>
+                        <td><button class="btn btn-info btn-sm" ui-sref="adminEditGenre({id: g.id})">View/Edit</button></td>
+                        <td><button class="btn btn-danger btn-sm" ng-click="controller.adminDeleteGenre(g.id)">Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Add second table here to display gig requests then have them match up side by side on the page when displayed. -->

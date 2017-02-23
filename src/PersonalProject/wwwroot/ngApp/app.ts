@@ -1,6 +1,6 @@
 namespace PersonalProject {
 
-    angular.module('PersonalProject', ['ui.router', 'ngResource', 'ui.bootstrap']).config((
+    angular.module('PersonalProject', ['ui.router', 'ngResource', 'ui.bootstrap','ngAnimate']).config((
         $stateProvider: ng.ui.IStateProvider,
         $urlRouterProvider: ng.ui.IUrlRouterProvider,
         $locationProvider: ng.ILocationProvider
@@ -11,12 +11,6 @@ namespace PersonalProject {
                 url: '/',
                 templateUrl: '/ngApp/views/home.html',
                 controller: PersonalProject.Controllers.HomeController,
-                controllerAs: 'controller'
-            })
-            .state('secret', {
-                url: '/secret',
-                templateUrl: '/ngApp/views/secret.html',
-                controller: PersonalProject.Controllers.SecretController,
                 controllerAs: 'controller'
             })
             .state('login', {
@@ -36,12 +30,48 @@ namespace PersonalProject {
                 templateUrl: '/ngApp/views/externalRegister.html',
                 controller: PersonalProject.Controllers.ExternalRegisterController,
                 controllerAs: 'controller'
+            })
+            .state(`addRemixRequest`, {
+                url: `/addRemixRequest`,
+                templateUrl: `/ngApp/views/registeredViews/remixRequest.html`,
+                controller: PersonalProject.Controllers.AddRemixController,
+                controllerAs: `controller`
+            })
+            .state(`userDashboard`, {
+                url: `/userDashboard`,
+                templateUrl: `/ngApp/views/registeredViews/userDashboard.html`,
+                controller: PersonalProject.Controllers.UserDashboardController,
+                controllerAs:`controller`
             }) 
-            .state('about', {
-                url: '/about',
-                templateUrl: '/ngApp/views/about.html',
-                controller: PersonalProject.Controllers.AboutController,
+            .state(`editRemixRequest`, {
+                url: `/editRemixRequest/:id`,
+                templateUrl: `/ngApp/views/registeredViews/editRemix.html`,
+                controller: PersonalProject.Controllers.EditRemixController,
+                controllerAs: `controller`
+            })
+            .state('aboutRemix', {
+                url: '/aboutRemix/:id',
+                templateUrl: '/ngApp/views/aboutRemix.html',
+                controller: PersonalProject.Controllers.AboutRemixController,
                 controllerAs: 'controller'
+            })
+            .state(`adminDashboard`, {
+                url: `/adminDashboard`,
+                templateUrl: `/ngApp/views/adminViews/adminDashboard.html`,
+                controller: PersonalProject.Controllers.AdminDashboardController,
+                controllerAs:`controller`
+            })
+            .state(`adminEditRemix`, {
+                url: `/adminEditRemix/:id`,
+                templateUrl: `/ngApp/views/adminViews/adminEditRemix.html`,
+                controller: PersonalProject.Controllers.AdminEditRemixController,
+                controllerAs:`controller`
+            })
+            .state(`adminEditGenre`, {
+                url: `/adminEditGenre/:id`,
+                templateUrl: `/ngApp/views/adminViews/adminEditGenre.html`,
+                controller: PersonalProject.Controllers.AdminEditGenreController,
+                controllerAs: `controller`
             })
             .state('notFound', {
                 url: '/notFound',
