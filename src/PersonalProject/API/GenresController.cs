@@ -25,9 +25,7 @@ namespace PersonalProject.API
         [HttpGet]
         public List<Genre> Get()
         {
-            
            return _genre.AllGenres();
-            
         }
 
 

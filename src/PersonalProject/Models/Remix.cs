@@ -16,6 +16,10 @@ namespace PersonalProject.Models
         public Genre RequestedGenre { get; set; }
         public ApplicationUser UserTable { get; set; }
 
+        public void ConsolePrinter(int num)
+        {
+            Console.WriteLine(num.ToString());
+        }
 
     }
 }

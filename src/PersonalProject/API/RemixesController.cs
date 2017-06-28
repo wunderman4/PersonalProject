@@ -48,8 +48,8 @@ namespace PersonalProject.API
         public List<Remix> Get()
         {
             
-            _rmx.PassName(User.Identity.Name);
-           return _rmx.ListRemixByUser();
+           // _rmx.PassName(User.Identity.Name);
+           return _rmx.ListRemixByUser(User.Identity.Name);
            
         }
         

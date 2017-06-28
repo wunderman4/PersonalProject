@@ -13,19 +13,21 @@ namespace PersonalProject.Services
         private IGenericRepository _repo;
         private IGenreService _genre;
         private ApplicationUser _user;
+        Remix myRemix = new Remix();
 
+        
         public RemixService(IGenericRepository repo, IGenreService genre)
         {
             _repo = repo;
             _genre = genre;
         }
 
-        public void PassName(string name)
-        {
-            _user = (from u in _repo.Query<ApplicationUser>()
-                     where u.UserName == name
-                     select u).FirstOrDefault();
-        }
+        //public void PassName(string name)
+        //{
+        //    _user = (from u in _repo.Query<ApplicationUser>()
+        //             where u.UserName == name
+        //             select u).FirstOrDefault();
+        //}
 
         public List<Remix> ListRemixes()
         {
@@ -65,8 +67,12 @@ namespace PersonalProject.Services
             return remixes;
         }
 
-        public List<Remix> ListRemixByUser()
+        public List<Remix> ListRemixByUser(string name)
         {
+            _user = (from u in _repo.Query<ApplicationUser>()
+                     where u.UserName == name
+                     select u).FirstOrDefault();
+
             List<Remix> rmxByUser = (from r in _repo.Query<Remix>()
                                      where r.UserTable == _user
                                      select new Remix //-----------------------Pay Attention to this! No circular ref!

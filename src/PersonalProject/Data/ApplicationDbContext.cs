@@ -10,6 +10,7 @@ namespace PersonalProject.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
         public DbSet<Remix> Remixes { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Gig> Gigs { get; set; }
